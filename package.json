@@ -1,8 +1,7 @@
 {
   "name": "jotai-async",
-  "version": "0.1.0",
+  "version": "0.1.1",
   "description": "Async side effects for jotai",
-  "main": "./src/index.ts",
   "exports": {
     ".": {
       "import": {
@@ -18,7 +17,8 @@
   "sideEffects": false,
   "scripts": {
     "build": "rollup -c rollup.config.mjs",
-    "test": "jest"
+    "test": "jest",
+    "prepublish": "npm run build"
   },
   "repository": {
     "type": "git",
