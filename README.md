@@ -69,7 +69,7 @@ const App = () => {
   return <Suspense fallback={"Loading"}>
     <UserProfile/>
   </Suspense>
-    }
+}
 ```
 
 ### Creating a Mutation Atom
