@@ -1,5 +1,7 @@
 # jotai-async
 
+![image](https://deno.bundlejs.com/badge?q=jotai-async@0.3.1,jotai-async@0.3.1/react&treeshake=[*],[*])
+
 An extension for [Jotai](https://github.com/pmndrs/jotai) that simplifies asynchronous state management in React applications.
 
 ## Features
