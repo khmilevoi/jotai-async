@@ -9,3 +9,4 @@ rollup.config.mjs
 .prettierrc.json
 eslint.config.mjs
 __tests__
+.github

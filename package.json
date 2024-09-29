@@ -1,6 +1,6 @@
 {
   "name": "jotai-async",
-  "version": "0.3.8",
+  "version": "0.3.9",
   "description": "Async side effects for jotai",
   "private": false,
   "exports": {
