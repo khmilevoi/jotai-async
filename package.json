@@ -1,6 +1,6 @@
 {
   "name": "jotai-async",
-  "version": "0.3.7",
+  "version": "0.3.8",
   "description": "Async side effects for jotai",
   "private": false,
   "exports": {
@@ -34,8 +34,7 @@
     "lint:eslint": "eslint",
     "fix": "pnpm run fix:prettier && pnpm run fix:eslint",
     "fix:eslint": "eslint --fix",
-    "fix:prettier": "prettier ./packages --write --config ./.prettierrc.json",
-    "prepare": "pnpm run lint && pnpm run test && pnpm run build"
+    "fix:prettier": "prettier ./packages --write --config ./.prettierrc.json"
   },
   "repository": {
     "type": "git",
