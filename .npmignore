@@ -1,5 +1,6 @@
 node_modules,
-src
+packages
+examples
 .gitignore
 .prettier.json
 jest.config.js
