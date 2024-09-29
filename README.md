@@ -51,25 +51,50 @@ const userQueryEffect = queryAtom(async ({ get, set, signal }) => {
 ### Using `userQueryEffect` in a Component
 
 ```jsx
-import React, { Suspense } from "react";
+import { Suspense } from "react";
 import { useQueryAtom } from 'jotai-async/react';
+import { atom } from "jotai";
+import { useAtom } from "jotai/react";
+
+const $mappedData = atom((get) => {
+  const data = get(userQueryEffect.$data);
+  
+  if(data === null) {
+    return null;
+  }
+  
+  return {
+    name: data.name,
+    email: atom(data.email),
+  }
+})
 
 const UserProfile = () => {
-  const { data, isLoading, error } = useQueryAtom(userQueryEffect);
+  const {error} = useQueryAtom(userQueryEffect);
+  
+  const data = useAtom($mappedData);
 
-  if (error) return <div>Error loading user data: {error.message}</div>;
+  if (error) {
+    return <span>Error loading user data: {error.message}</span>;
+  };
 
+  if(data === null) {
+    return <span>No data</span>
+  }
+  
+  const [email, setEmail] = useAtom(data.email);
+  
   return (
     <div>
       <h1>{data.name}</h1>
-      <p>{data.email}</p>
+      <input name={"email"} value={email} onChange={(e) => setEmail(e.target.value)} />
     </div>
   );
 }
 
 const App = () => {
   return <Suspense fallback={"Loading"}>
-    <UserProfile/>
+    <UserProfile />
   </Suspense>
 }
 ```
