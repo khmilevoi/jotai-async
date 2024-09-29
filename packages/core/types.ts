@@ -21,7 +21,9 @@ export type QueryAtom<Result> = Atom<Result | null> & {
   $data: Atom<Result | null>;
   abort: WritableAtom<unknown, [], void>;
   $error: Atom<Error | null>;
-  $status: Atom<"init" | "loading" | "fetching" | "success" | "error">;
+  $status: Atom<QueryStatus>;
   $isLoading: Atom<boolean>;
   $promise: Atom<Promise<Result> | null>;
 };
+
+export type QueryStatus = "init" | "loading" | "fetching" | "success" | "error";

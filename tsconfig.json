@@ -20,6 +20,6 @@
     },
   },
   "include": [
-    "packages/**/*", "tests/**/*"],
+    "packages/**/*", "__tests__/**/*", "examples/**/*"],
   "exclude": ["node_modules", "dist"]
 }

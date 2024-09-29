@@ -66,6 +66,11 @@ export class AsyncService<Result, Payload = void> {
         if (!isInitialized) {
           set(this.$isInitialized, true);
         }
+
+        set(this.$isFetching, false);
+        if (!isInitialized) {
+          set(this.$isLoading, false);
+        }
       })
       .catch((error) => {
         if (error.name !== "AbortError") {
@@ -75,8 +80,7 @@ export class AsyncService<Result, Payload = void> {
           );
           set(this.$status, "error");
         }
-      })
-      .finally(() => {
+
         set(this.$isFetching, false);
         if (!isInitialized) {
           set(this.$isLoading, false);

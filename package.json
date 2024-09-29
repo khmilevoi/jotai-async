@@ -28,14 +28,14 @@
   "sideEffects": false,
   "scripts": {
     "build": "rollup -c rollup.config.mjs",
-    "test": "jest",
+    "test": "vitest",
     "lint": "pnpm run lint:prettier && pnpm run lint:eslint",
-    "lint:prettier": "prettier ./packages --config ./.prettierrc.json",
+    "lint:prettier": "prettier ./packages --config ./.prettierrc.json --check",
     "lint:eslint": "eslint",
     "fix": "pnpm run fix:prettier && pnpm run fix:eslint",
     "fix:eslint": "eslint --fix",
     "fix:prettier": "prettier ./packages --write --config ./.prettierrc.json",
-    "prepublish": "pnpm run lint && pnpm run build"
+    "prepublish": "pnpm run lint && pnpm run test && pnpm run build"
   },
   "repository": {
     "type": "git",
@@ -72,7 +72,8 @@
     "react": "^18.3.1",
     "rollup": "^4.22.5",
     "rollup-plugin-dts": "^6.1.1",
-    "typescript-eslint": "^8.7.0"
+    "typescript-eslint": "^8.7.0",
+    "vitest": "^2.1.1"
   },
   "peerDependencies": {
     "jotai": "^2.10.0",

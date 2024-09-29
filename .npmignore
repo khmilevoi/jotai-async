@@ -8,3 +8,4 @@ rollup.config.mjs
 .idea
 .prettierrc.json
 eslint.config.mjs
+__tests__
