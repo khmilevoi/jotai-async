@@ -1,6 +1,6 @@
 {
   "name": "jotai-async",
-  "version": "0.3.4",
+  "version": "0.3.5",
   "description": "Async side effects for jotai",
   "private": false,
   "exports": {
@@ -28,7 +28,7 @@
   "sideEffects": false,
   "scripts": {
     "build": "rollup -c rollup.config.mjs",
-    "test": "vitest",
+    "test": "vitest run",
     "lint": "pnpm run lint:prettier && pnpm run lint:eslint",
     "lint:prettier": "prettier ./packages --config ./.prettierrc.json --check",
     "lint:eslint": "eslint",
