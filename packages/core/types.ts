@@ -1,4 +1,4 @@
-import type {Atom, Getter, Setter, WritableAtom} from 'jotai';
+import type { Atom, Getter, Setter, WritableAtom } from "jotai";
 
 export interface AsyncCallbackOptions {
   get: Getter;
@@ -21,7 +21,7 @@ export type QueryAtom<Result> = Atom<Result | null> & {
   $data: Atom<Result | null>;
   abort: WritableAtom<unknown, [], void>;
   $error: Atom<Error | null>;
-  $status: Atom<'init' | 'loading' | 'fetching' | 'success' | 'error'>;
+  $status: Atom<"init" | "loading" | "fetching" | "success" | "error">;
   $isLoading: Atom<boolean>;
   $promise: Atom<Promise<Result> | null>;
 };

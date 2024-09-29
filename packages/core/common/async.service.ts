@@ -1,7 +1,7 @@
 import type { Getter, Setter } from "jotai";
 import { atom } from "jotai";
 
-import type { AsyncCallback } from "../types";
+import type { AsyncCallback } from "../types.ts";
 
 export type AsyncAtomStatus =
   | "init"
@@ -20,14 +20,13 @@ export class AsyncService<Result, Payload = void> {
   $signal = atom<AbortController | null>(null);
   $promise = atom<Promise<Result> | null>(null);
 
-  constructor(private readonly callback: AsyncCallback<Result, Payload>) {
-  }
+  constructor(private readonly callback: AsyncCallback<Result, Payload>) {}
 
   call({
-         get,
-         set,
-         payload
-       }: {
+    get,
+    set,
+    payload,
+  }: {
     get: Getter;
     set: Setter;
     payload: Payload;
@@ -55,7 +54,7 @@ export class AsyncService<Result, Payload = void> {
 
     const promise = this.callback(
       { get, set, signal: controller.signal },
-      payload
+      payload,
     );
 
     set(this.$promise, promise);
@@ -72,7 +71,7 @@ export class AsyncService<Result, Payload = void> {
         if (error.name !== "AbortError") {
           set(
             this.$error,
-            error instanceof Error ? error : new Error(String(error))
+            error instanceof Error ? error : new Error(String(error)),
           );
           set(this.$status, "error");
         }

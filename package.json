@@ -6,7 +6,7 @@
   "exports": {
     ".": {
       "import": {
-        "types": "./dist/index.d.mts",
+        "types": "./dist/index.d.ts",
         "default": "./dist/index.mjs"
       },
       "default": {
@@ -14,14 +14,14 @@
         "default": "./dist/index.js"
       }
     },
-    "./*": {
+    "./react": {
       "import": {
-        "types": "./dist/*/index.d.mts",
-        "default": "./dist/*/index.mjs"
+        "types": "./dist/react/index.d.ts",
+        "default": "./dist/react/index.mjs"
       },
       "default": {
-        "types": "./dist/*/index.d.ts",
-        "default": "./dist/*/index.js"
+        "types": "./dist/react/index.d.ts",
+        "default": "./dist/react/index.js"
       }
     }
   },
@@ -29,7 +29,13 @@
   "scripts": {
     "build": "rollup -c rollup.config.mjs",
     "test": "jest",
-    "prepublish": "npm run build"
+    "lint": "pnpm run lint:prettier && pnpm run lint:eslint",
+    "lint:prettier": "prettier ./packages --config ./.prettierrc.json",
+    "lint:eslint": "eslint",
+    "fix": "pnpm run fix:prettier && pnpm run fix:eslint",
+    "fix:eslint": "eslint --fix",
+    "fix:prettier": "prettier ./packages --write --config ./.prettierrc.json",
+    "prepublish": "pnpm run lint && pnpm run build"
   },
   "repository": {
     "type": "git",
@@ -52,16 +58,21 @@
     "uuid": "^10.0.0"
   },
   "devDependencies": {
+    "@eslint/js": "^9.11.1",
     "@rollup/plugin-swc": "^0.4.0",
     "@swc/core": "^1.7.26",
     "@types/react": "^18.3.10",
     "@types/uuid": "^10.0.0",
     "eslint": "^9.11.1",
+    "eslint-plugin-react": "^7.37.0",
+    "eslint-plugin-simple-import-sort": "^12.1.1",
+    "globals": "^15.9.0",
     "jotai": "^2.10.0",
     "prettier": "^3.3.3",
     "react": "^18.3.1",
     "rollup": "^4.22.5",
-    "rollup-plugin-dts": "^6.1.1"
+    "rollup-plugin-dts": "^6.1.1",
+    "typescript-eslint": "^8.7.0"
   },
   "peerDependencies": {
     "jotai": "^2.10.0",

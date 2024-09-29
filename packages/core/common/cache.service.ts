@@ -1,16 +1,17 @@
-import { AsyncCallback } from '../types';
-import { AsyncService } from './async.service.ts';
+import type { AsyncCallback } from "../types.ts";
+import { AsyncService } from "./async.service.ts";
 
 export class CacheService {
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
   private managerMap = new Map<string, AsyncService<any, any>>();
   private readonly keysStack: string[] = [];
 
   constructor(private readonly sizeOfStack: number = 100) {}
 
   getManager<Result, Payload>({
-                                key,
-                                callback,
-                              }: {
+    key,
+    callback,
+  }: {
     key: string;
     callback: AsyncCallback<Result, Payload>;
   }): AsyncService<Result, Payload> {

@@ -1,9 +1,9 @@
-import { atom } from 'jotai';
-import { atomEffect } from 'jotai-effect';
+import { atom } from "jotai";
+import { atomEffect } from "jotai-effect";
 
-import { asyncServiceFactory } from './common/async-service.factory.ts';
-import { cacheKeyResolver } from './common/cache-key.resovler.ts';
-import type { AsyncCallback, CacheKeyAtom, QueryAtom } from './types';
+import { asyncServiceFactory } from "./common/async-service.factory.ts";
+import { cacheKeyResolver } from "./common/cache-key.resovler.ts";
+import type { AsyncCallback, CacheKeyAtom, QueryAtom } from "./types.ts";
 
 export const queryAtom = <Result>(
   callback: AsyncCallback<Result, void>,
@@ -42,7 +42,7 @@ export const queryAtom = <Result>(
   });
   $base.debugLabel = `${options?.debugLabel}.$base`;
 
-  const $status = selectAtom((manager) => manager.$status, 'init');
+  const $status = selectAtom((manager) => manager.$status, "init");
   $status.debugLabel = `${options?.debugLabel}.$status`;
 
   const $error = selectAtom((manager) => manager.$error, null);

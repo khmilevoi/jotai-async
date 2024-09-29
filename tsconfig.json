@@ -15,9 +15,11 @@
     "noEmit": true,
     "baseUrl": ".",
     "paths": {
-      "jotai-async": ["./src/index.ts"]
+      "jotai-async": ["./packages/core/index.ts"],
+      "jotai-async/react": ["./packages/react/index.ts"]
     },
   },
-  "include": ["src/**/*", "tests/**/*"],
+  "include": [
+    "packages/**/*", "tests/**/*"],
   "exclude": ["node_modules", "dist"]
 }

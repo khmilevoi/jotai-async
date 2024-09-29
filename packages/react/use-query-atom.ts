@@ -1,5 +1,5 @@
 import { useAtomValue } from "jotai";
-import type { QueryAtom } from "../types.ts";
+import type { QueryAtom } from "jotai-async";
 
 export const useQueryAtom = <Result>(query: QueryAtom<Result>) => {
   let data = useAtomValue(query);
@@ -21,6 +21,6 @@ export const useQueryAtom = <Result>(query: QueryAtom<Result>) => {
     isLoading,
     isFetching,
     status,
-    error
+    error,
   };
 };

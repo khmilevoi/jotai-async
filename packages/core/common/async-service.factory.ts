@@ -1,8 +1,8 @@
-import { Atom, atom, Getter } from 'jotai';
+import { type Atom, atom, type Getter } from "jotai";
 
-import { AsyncCallback } from '../types';
-import { AsyncService } from './async.service.ts';
-import { cacheService } from './cache.service.ts';
+import type { AsyncCallback } from "../types.ts";
+import { AsyncService } from "./async.service.ts";
+import { cacheService } from "./cache.service.ts";
 
 export const asyncServiceFactory = <Result>(
   $resolvedCacheKey: Atom<string | null>,

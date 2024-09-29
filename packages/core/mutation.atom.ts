@@ -1,7 +1,7 @@
-import { atom } from 'jotai';
+import { atom } from "jotai";
 
-import { AsyncService } from './common/async.service.ts';
-import type{ AsyncCallback } from './types';
+import { AsyncService } from "./common/async.service.ts";
+import type { AsyncCallback } from "./types.ts";
 
 export const mutationAtom = <Result, Payload>(
   callback: AsyncCallback<Result, Payload>,

@@ -1,9 +1,8 @@
 import { atom } from "jotai";
 import { atomEffect } from "jotai-effect";
 
-
-import { CacheKey, CacheKeyAtom } from "../types";
 import { generateId } from "../helpers/generate-id.ts";
+import type { CacheKey, CacheKeyAtom } from "../types.ts";
 
 export const cacheKeyResolver = (cacheKey?: CacheKeyAtom) => {
   const $resolvedCacheKey = atom<string | null>(null);
@@ -37,7 +36,7 @@ export const cacheKeyResolver = (cacheKey?: CacheKeyAtom) => {
 
   return {
     $resolvedCacheKey,
-    cacheKeyEffect
+    cacheKeyEffect,
   };
 };
 
