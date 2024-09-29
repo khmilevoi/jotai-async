@@ -5,7 +5,7 @@ name: Node.js Package
 
 on:
   release:
-    types: [created]
+    types: [ created ]
 
 jobs:
   build:
@@ -19,7 +19,7 @@ jobs:
       - uses: pnpm/action-setup@v4
         with:
           version: 9
-      - run: pnpm i 
+      - run: pnpm i
       - run: pnpm run lint
       - run: pnpm run test
       - run: pnpm run build
