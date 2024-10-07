@@ -54,7 +54,7 @@ const userQueryEffect = queryAtom(async ({ get, set, signal }) => {
 import { Suspense } from "react";
 import { useQueryAtom } from 'jotai-async/react';
 import { atom } from "jotai";
-import { useAtom } from "jotai/react";
+import { useAtomValue, useAtom } from "jotai/react";
 
 const $mappedData = atom((get) => {
   const data = get(userQueryEffect.$data);
@@ -72,7 +72,9 @@ const $mappedData = atom((get) => {
 const UserProfile = () => {
   const {error} = useQueryAtom(userQueryEffect);
   
-  const data = useAtom($mappedData);
+  const data = useAtomValue($mappedData);
+
+  const [email, setEmail] = useAtom(data.email);
 
   if (error) {
     return <span>Error loading user data: {error.message}</span>;
@@ -81,8 +83,6 @@ const UserProfile = () => {
   if(data === null) {
     return <span>No data</span>
   }
-  
-  const [email, setEmail] = useAtom(data.email);
   
   return (
     <div>
@@ -118,7 +118,6 @@ const updateUserMutation = mutationAtom(async ({ get, set, signal }, userData) =
 ### Using the Mutation Atom
 
 ```jsx
-import React from 'react';
 import { useAtom } from 'jotai';
 import { updateUserMutation } from './atoms';
 
